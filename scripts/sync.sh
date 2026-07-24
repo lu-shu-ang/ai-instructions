@@ -18,8 +18,8 @@ if git -C "$repo_root" remote get-url origin >/dev/null 2>&1; then
     echo "Current branch has no upstream; skipping pull."
   elif [[ "$(git -C "$repo_root" rev-parse HEAD)" == "$(git -C "$repo_root" rev-parse "$upstream_ref")" ]]; then
     echo "Already current on ${local_branch}."
-  elif [[ -n "$(git -C "$repo_root" status --porcelain)" ]]; then
-    echo "Local changes exist; refusing to update the instructions checkout." >&2
+  elif ! git -C "$repo_root" diff --quiet || ! git -C "$repo_root" diff --cached --quiet; then
+    echo "Tracked local changes exist; refusing to update the instructions checkout." >&2
     exit 1
   else
     git -C "$repo_root" merge --ff-only "$upstream_ref"
