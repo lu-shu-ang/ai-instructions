@@ -38,8 +38,8 @@ git clone <你的私有仓库地址> ~/projects/ai-instructions
 
 `.local/CURRENT.md` 必须按顺序包含：
 
-1. 本机缓存标识、源仓库绝对路径、最后聚合时间；
-2. `common/POLICY.md` 的完整内容；
+1. 本机缓存标识、源仓库绝对路径、最后聚合时间、最后聚合的git提交号；
+2. `common包里面` 的完整内容；
 3. `codex/EXTRA.md` 与 `claude/EXTRA.md` 的完整内容，并明确当前工具只应用自己的专属段落；
 4. 冲突处理规则：项目内更具体的规则优先，但不得削弱安全要求。
 
