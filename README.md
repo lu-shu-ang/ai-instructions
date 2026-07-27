@@ -43,20 +43,3 @@ git clone <你的私有仓库地址> ~/projects/ai-instructions
 3. `codex/EXTRA.md` 与 `claude/EXTRA.md` 的完整内容，并明确当前工具只应用自己的专属段落；
 4. 冲突处理规则：项目内更具体的规则优先，但不得削弱安全要求。
 
-## 日常修改
-
-在任一电脑编辑规则并推送：
-
-```bash
-git add common/POLICY.md codex/EXTRA.md claude/EXTRA.md
-git commit -m "update AI instructions"
-git push
-```
-
-其他电脑在下一次新开任务且本地聚合缓存超过 10 分钟后，会按协议拉取并生成新缓存。已开始的会话通常不会重新加载指令；重要规则更新后请新开任务。
-
-## 规则编写建议
-
-- 写具体、可验证的规则，例如“修改代码后运行相关测试”，而非“注意质量”。
-- 通用原则放 `common/POLICY.md`；仅某工具可做的操作放对应 `EXTRA.md`。
-- 不要提交 API Key、密码、令牌或客户数据；敏感信息应保留在本机密钥链或环境变量中。
